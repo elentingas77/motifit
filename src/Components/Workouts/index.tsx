@@ -13,7 +13,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 import EmojiNatureOutlinedIcon from '@mui/icons-material/EmojiNatureOutlined';
 
-const workouts: any = [
+export const workouts: any = [
   {
     id: 2345,
     title: 'Full Body',
