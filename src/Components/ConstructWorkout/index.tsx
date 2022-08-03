@@ -15,6 +15,7 @@ import Divider from '@mui/material/Divider';
 import MotifitTitle from 'Components/reusable/MotifitTitle';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import colors from '../../constants/colors';
+import { Typography } from '@mui/material';
 
 function not(a: readonly number[], b: readonly number[]) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -142,7 +143,7 @@ const ConstructWorkout: React.FunctionComponent<{}> = ({ }) => {
     <Styles>
     <MotifitTitle>Construct my workout</MotifitTitle>
     <Grid container spacing={2} justifyContent="center" alignItems="center">
-      <Grid item>{customList('Workout Moves', left)}</Grid>
+      <Grid item>{customList('Workout moves list', left)}</Grid>
       <Grid item>
         <Grid container direction="column" alignItems="center">
           <Button
@@ -167,8 +168,10 @@ const ConstructWorkout: React.FunctionComponent<{}> = ({ }) => {
           </Button>
         </Grid>
       </Grid>
-      <Grid item>{customList('Chosen Moves (auto saved)', right)}</Grid>
+      <Grid item>{customList('My chosen moves (auto saved)', right)}</Grid>
     </Grid>
+
+    <Typography sx={{ textAlign: 'center' }} variant="caption">{right.length < 5 ? 'At least 5 moves must be chosen' : ' '}</Typography>
     
     <Button 
         sx={{ bgcolor: '#1a237e', width: 'min-content', minWidth: '400px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '10px', marginTop: '10px' }} 
