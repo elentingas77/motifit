@@ -21,6 +21,14 @@ import {
 const Score: React.FunctionComponent<{}> = ({ }) => {
   let history = useHistory();  
 
+  const [ourText, setOurText] = React.useState("I am making great progress and becoming healthier with Motifit.");
+  const msg = new SpeechSynthesisUtterance();
+
+  const speechHandler = (msg) => {
+    msg.text = ourText;
+    window.speechSynthesis.speak(msg);
+  }
+
   const shareText = 'I am making great progress and becoming healthier with Motifit.'
 
   return (
@@ -65,6 +73,9 @@ const Score: React.FunctionComponent<{}> = ({ }) => {
       <Button onClick={() => history.push('/workouts')} 
         sx={{ bgcolor: '#cddc39', color: 'black', width: '350px', marginLeft: 'auto', marginRight: 'auto'}} startIcon={<EmojiEventsTwoToneIcon />} variant="contained">
           Start a new workout</Button>
+
+      
+      <Button onClick={() => speechHandler(msg)}>Motifit</Button>
 
     </Styles>
   )
