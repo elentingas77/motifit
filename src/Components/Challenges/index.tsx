@@ -74,7 +74,6 @@ const Challenges: React.FunctionComponent<{}> = ({}) => {
     <Styles>
       <MotifitTitle>Challenges</MotifitTitle>
 
-
       <Carousel
         responsive={responsive}
         ssr={true}
