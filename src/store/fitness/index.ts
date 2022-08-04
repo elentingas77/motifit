@@ -312,7 +312,7 @@ export const initialState: State = {
       title: 'Side lungdes1',
       score: 5,
       calories: 20,
-      imagePath: 'workoutItem.jpg',
+      imagePath: 'Crunch.gif',
       instructions: ' instruction 1 '
     },
     {

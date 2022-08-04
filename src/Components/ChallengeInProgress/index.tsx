@@ -89,10 +89,10 @@ const ChallengeInProgress: React.FunctionComponent<{}> = () => {
 
       <img 
         alt="fitness challenge move"
-        width={500}
-        height={500}
+        width={480 * 1.3}
+        height={270 * 1.3}
         src={ currentMove?.imagePath && !isRestMove ? require(`../../assets/images/${currentMove?.imagePath}`) : Rest} 
-        style={{ borderRadius: '15px', marginTop: 11, marginBottom: 11, marginLeft: 200, marginRight: 'auto'}}
+        style={{ borderRadius: '15px', marginTop: 11, marginBottom: 11, marginLeft: 100, marginRight: 'auto'}}
       />
       </div>
       

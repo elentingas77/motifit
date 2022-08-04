@@ -101,10 +101,10 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
 
       <img 
         alt="fitness workout move"
-        width={500}
-        height={500}
+        width={480 * 1.3}
+        height={270 * 1.3}
         src={ currentMove?.imagePath && !isRestMove ? require(`../../assets/images/${currentMove?.imagePath}`) : Rest} 
-        style={{ borderRadius: '15px', marginTop: 11, marginBottom: 11, marginLeft: 200, marginRight: 'auto'}}
+        style={{ borderRadius: '15px', marginTop: 11, marginBottom: 11, marginLeft: 100, marginRight: 'auto'}}
       />
       </div>
       
@@ -133,9 +133,9 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
                   setIsRestMove(false);
                   setCurrentMove(move);
                   setCurrentMoveIndex(currentMoveIndex + 1);
-                  speechHandler(move?.instructions);
                   setOpen(true);
                   speechHandler(motivationalMessages[(currentMoveIndex) % 8 ]);
+                  speechHandler(move?.instructions);
                   return { shouldRepeat: true };
                 } else if (isRest) {
                   setCurrentMoveIndex(currentMoveIndex + 1);
