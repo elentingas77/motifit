@@ -33,7 +33,7 @@ const Score: React.FunctionComponent<{}> = () => {
 
   const { completedWorkouts, completedChallenges, score, calories } = feedback;
 
-  const shareText = `I am making great progress and becoming healthier with Motifit. I have completed ${completedWorkouts} workouts, ${completedChallenges} challenges and burned ${calories} calories. My overall score is ${score}.`;
+  const shareText = `I am making great progress and becoming healthier with Motifit. I have completed ${completedWorkouts} workout${completedWorkouts !== 1 ? 's' : ''}, ${completedChallenges} challenge${completedChallenges !== 1 ? 's' : ''} and burned ${calories} calories. My overall score is ${score}.`;
   const url = `motifit.com`;
 
   return (
@@ -59,7 +59,7 @@ const Score: React.FunctionComponent<{}> = () => {
 
           {`You have completed`}
           <br />
-          {`${completedWorkouts} workouts, ${completedChallenges} challenges`}
+          {`${completedWorkouts} workout${completedWorkouts !== 1 ? 's' : ''}, ${completedChallenges} challenge${completedChallenges !== 1 ? 's' : ''}`}
           <br />
           {`and burned ${calories} calories.`}
           <br />

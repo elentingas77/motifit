@@ -313,7 +313,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 1 '
     },
     {
       id: 2,
@@ -321,7 +321,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 2 '
     },
     {
       id: 3,
@@ -329,7 +329,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 3 '
     },
     {
       id: 4,
@@ -337,7 +337,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 4 '
     },
     {
       id: 5,
@@ -345,7 +345,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 5 '
     },
     {
       id: 6,
@@ -353,7 +353,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 6 '
     },
     {
       id: 7,
@@ -361,7 +361,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 7 '
     },
     {
       id: 8,
@@ -369,7 +369,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 8 '
     },
     {
       id: 9,
@@ -377,7 +377,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 9 '
     },
     {
       id: 10,
@@ -385,7 +385,7 @@ export const initialState: State = {
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',
-      instructions: 'SomeSome intructions to be shown to the user. Some intructions to be shown to the user. intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. Some intructions to be shown to the user. '
+      instructions: ' instruction 10 '
     },
   ]
 }
@@ -394,6 +394,14 @@ export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case Constants.SET_ROLE:
       return { ...state, role: action.role}
+      case Constants.ADD_CALORIES:
+        return { ...state, feedback: { ...state.feedback, calories: state.feedback.calories + action.calories }}
+      case Constants.ADD_SCORE:
+        return { ...state, feedback: { ...state.feedback, score: state.feedback.score + action.score }}
+      case Constants.ADD_WORKOUT:
+        return { ...state, feedback: { ...state.feedback, completedWorkouts: state.feedback.completedWorkouts + 1 }}
+      case Constants.ADD_CHALLENGE:
+        return { ...state, feedback: { ...state.feedback, completedChallenges: state.feedback.completedChallenges + 1 }}
     default:
       return state
   }

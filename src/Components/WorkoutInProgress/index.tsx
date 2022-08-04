@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useLocation } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
 import { Button, IconButton, Typography } from '@mui/material'
@@ -9,6 +9,7 @@ import GolfCourseTwoToneIcon from '@mui/icons-material/GolfCourseTwoTone';
 import colors from '../../constants/colors'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Rest from '../../assets/images/rest.jpg';
+import { addCalories, addScore, addWorkout } from 'store/fitness/actions/creators'
 
 const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   let history = useHistory(); 
@@ -17,6 +18,8 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   const { id, title, role, workoutInProgress } = location?.state?.workout;
 
   const moves = useSelector((state: any) => state.fitness.moves);
+  const dispatch = useDispatch();
+
   const [currentMoveIndex, setCurrentMoveIndex] = React.useState(0);
   const [currentMove, setCurrentMove] = React.useState<any>(null);
   const [isRestMove, setIsRestMove] = React.useState<boolean>(false);
@@ -26,11 +29,10 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   const [currentCalories, setCurrentCalories] = React.useState(0);
   const [currentScore, setCurrentScore] = React.useState(0);
 
-  const [speakerText, setSpeakerText] = React.useState<any>('')
   const msg = new SpeechSynthesisUtterance();
 
-  const speechHandler = () => {
-    msg.text = speakerText;
+  const speechHandler = (text) => {
+    msg.text = text;
     window.speechSynthesis.speak(msg);
   }
 
@@ -44,12 +46,10 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
       setIsRestMove(false);
       setCurrentMove(move);
       setCurrentMoveIndex(currentMoveIndex + 1);
-      setSpeakerText(move?.instructions);
-      speechHandler();
+      speechHandler(move?.instructions);
     } else if (isRestMove) {
       setCurrentMoveIndex(currentMoveIndex + 1);
-      setSpeakerText('Rest time!');
-      speechHandler();
+      speechHandler('Rest time!');
       setIsRestMove(true)
     } else {
       setIsRestMove(false);
@@ -99,7 +99,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
       <div style={{ display: 'flex', flexDirection: 'column' }} >
         <CountdownCircleTimer
               isPlaying
-              duration={4}
+              duration={60}
               colors={['#9900ef', '#ff6900', '#fcb900', '#7bdcb5', '#eb144c', '#F7B801', '#A30000']}
               colorsTime={[59, 40, 30, 20, 10, 5]}
               onComplete={() => {
@@ -107,6 +107,9 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
                 if (!isRestMove) {
                   setCurrentCalories(currentCalories + currentMove?.calories);
                   setCurrentScore(currentScore + currentMove?.score);
+
+                  dispatch(addCalories(currentMove?.calories));
+                  dispatch(addScore(currentMove?.score));
                 }
 
                 let move = moves?.filter(({ id }) => id === workoutInProgress[currentMoveIndex])?.pop()
@@ -118,14 +121,12 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
                   setIsRestMove(false);
                   setCurrentMove(move);
                   setCurrentMoveIndex(currentMoveIndex + 1);
-                  setSpeakerText(move?.instructions);
-                  speechHandler();
+                  speechHandler(move?.instructions);
                   return { shouldRepeat: true };
                 } else if (isRest) {
                   setCurrentMoveIndex(currentMoveIndex + 1);
                   setIsRestMove(true)
-                  setSpeakerText('Rest time!');
-                  speechHandler();
+                  speechHandler('Rest time!');
                   return { shouldRepeat: true };
                 } else {
                   setIsRestMove(false);
@@ -134,6 +135,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
                   setCurrentWorkoutId(null);
                   setCurrentCalories(0);
                   setCurrentScore(0);
+                  dispatch(addWorkout());
                   history.push('/score')
                 }
               }}
@@ -194,7 +196,14 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
           {role}
         </Typography>
         
-        <Button onClick={() => history.push('/score')} 
+        <Button onClick={() => {
+
+          if (currentMoveIndex > 1) {
+            dispatch(addWorkout());
+          }
+
+          history.push('/score');
+        }} 
           sx={{ bgcolor: '#006b76', color: 'white', width: '200px', marginLeft: 'auto', marginRight: 'auto'}} variant="contained">
             Finish early</Button>
       </div>
