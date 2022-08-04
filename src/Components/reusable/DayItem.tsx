@@ -37,7 +37,7 @@ const DayItem: React.FunctionComponent<Props> = ({
     };
 
   return (
-    <CustomStyle style={{ backgroundColor: isDone ? '#b2ebf2' : undefined }} key={id} onClick={onClick}>
+    <CustomStyle key={id} style={{ backgroundColor: isDone ? '#b2ebf2' : undefined }} >
       <div style={{ display: 'flex', width: '100%', flexDirection: 'row',  justifyContent: 'space-around', marginTop: '12px', marginBottom: '12px', }} >
         <MotifitTitle>
           {id}
@@ -59,7 +59,7 @@ const DayItem: React.FunctionComponent<Props> = ({
         >
           {workouts.map(({ id, title }) => { 
             return (
-              <MenuItem value={id}>{title}</MenuItem>
+              <MenuItem key={id} value={id}>{title}</MenuItem>
             );
           })}
         </Select>

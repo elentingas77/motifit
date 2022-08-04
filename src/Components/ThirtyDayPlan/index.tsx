@@ -262,7 +262,7 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = ({ }) => {
       <Grid container rowSpacing={0.5} columnSpacing={0.5}>
         {days.map(({ id, isDone, workoutId, isRestDay }) => {
           return (
-            <Grid item xs={2}>
+            <Grid key={id} item xs={2}>
               <DayItem 
                 id={id}
                 isDone={isDone}

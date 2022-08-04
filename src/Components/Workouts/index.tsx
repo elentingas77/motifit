@@ -93,7 +93,6 @@ const Workouts: React.FunctionComponent<{}> = ({}) => {
 
       <Carousel
         responsive={responsive}
-        ssr={true}
         keyBoardControl={true}
         infinite={true}
         autoPlay={false}
@@ -105,14 +104,15 @@ const Workouts: React.FunctionComponent<{}> = ({}) => {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        {workouts.map(({ id, title, description, role, calories, imagePath}) => (
+        {workouts.map((workout) => (
           <WorkoutsListItem
-            id={id}
-            title={title}
-            description={description}
-            role={role}
-            calories={calories}
-            imagePath={imagePath}
+            id={workout.id}
+            title={workout.title}
+            description={workout.description}
+            role={workout.role}
+            calories={workout.calories}
+            imagePath={workout.imagePath}
+            onClick={() => history.push('/workout-in-progress/' + workout.id, {workout: workout})}
         />
         ))}
       </Carousel>

@@ -5,6 +5,8 @@ import Challenges from '../Components/Challenges'
 import ThirtyDayPlan from '../Components/ThirtyDayPlan'
 import ConstructWorkout from '../Components/ConstructWorkout'
 import Score from '../Components/Score'
+import WorkoutInProgress from 'Components/WorkoutInProgress'
+import ChallengeInProgress from 'Components/ChallengeInProgress'
 
 const Routes: React.FunctionComponent = () => {
   return (
@@ -27,12 +29,12 @@ const Routes: React.FunctionComponent = () => {
       <Route path="/construct-workout">
         <ConstructWorkout />
       </Route>
-      {/* <Route path="/workout-in-progress/:id">
+      <Route path="/workout-in-progress/:id">
         <WorkoutInProgress />
       </Route>
       <Route path="/challenge-in-progress/:id">
         <ChallengeInProgress />
-      </Route> */}
+      </Route>
     </Switch>
   )
 }

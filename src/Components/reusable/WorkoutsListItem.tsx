@@ -32,7 +32,7 @@ const CustomStyle = styled.div`
 const WorkoutsListItem: React.FunctionComponent<Props> = ({ 
     id, title, description, role, calories, imagePath, onClick = () => {} }) => {
   return (
-    <CustomStyle key={id} onClick={onClick}>
+    <CustomStyle key={id}>
       <Typography variant="body1">
         {title}
         <Tooltip title={"Focus areas: " + description}>

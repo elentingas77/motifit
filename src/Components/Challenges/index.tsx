@@ -76,7 +76,6 @@ const Challenges: React.FunctionComponent<{}> = ({}) => {
 
       <Carousel
         responsive={responsive}
-        ssr={true}
         keyBoardControl={true}
         infinite={true}
         autoPlay={false}
@@ -88,13 +87,14 @@ const Challenges: React.FunctionComponent<{}> = ({}) => {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        {challenges.map(({ id, title, description, score, imagePath}) => (
+        {challenges.map((challenge) => (
           <ChallengesListItem
-            id={id}
-            title={title}
-            description={description}
-            score={score}
-            imagePath={imagePath}
+            id={challenge.id}
+            title={challenge.title}
+            description={challenge.description}
+            score={challenge.score}
+            imagePath={challenge.imagePath}
+            onClick={() => history.push('/challenge-in-progress/' + challenge.id, {challenge: challenge})}
         />
         ))}
       </Carousel>

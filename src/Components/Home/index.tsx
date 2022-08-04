@@ -97,19 +97,19 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
           <Divider />
           <List sx={{ color: "white" }}>
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push('/30-day-plan')}>
-                  <ListItemIcon>
-                    <CalendarMonthRoundedIcon sx={{ color: "white" }} />
-                  </ListItemIcon>
-                  <ListItemText primary={'30 Day Plan'} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
                 <ListItemButton onClick={() => history.push('/workouts')}>
                   <ListItemIcon>
                     <FitnessCenterRoundedIcon sx={{ color: "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'Workouts'} />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton onClick={() => history.push('/30-day-plan')}>
+                  <ListItemIcon>
+                    <CalendarMonthRoundedIcon sx={{ color: "white" }} />
+                  </ListItemIcon>
+                  <ListItemText primary={'30 Day Plan'} />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>

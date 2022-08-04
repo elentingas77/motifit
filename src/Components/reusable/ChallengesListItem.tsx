@@ -31,7 +31,7 @@ const CustomStyle = styled.div`
 const ChallengesListItem: React.FunctionComponent<Props> = ({ 
     id, title, description, score, imagePath, onClick = () => {} }) => {
   return (
-    <CustomStyle key={id} onClick={onClick}>
+    <CustomStyle key={id}>
       <Typography color={'white'} variant="body1">
         {title}
         <Tooltip title={"Focus areas: " + description}>
