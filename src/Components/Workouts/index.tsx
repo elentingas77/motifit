@@ -17,6 +17,7 @@ const Workouts: React.FunctionComponent<{}> = () => {
 
   const workouts = useSelector((state: any) => state.fitness.workouts);
   const role = useSelector((state: any) => state.fitness.role);
+  const healthBenefits = useSelector((state: any) => state.fitness.healthBenefits);
   const roleWorkouts = [...workouts].filter((item) => item.role === role);
   
   const responsive = {
@@ -86,10 +87,7 @@ const Workouts: React.FunctionComponent<{}> = () => {
             <IconButton sx={{ color: '#e65100' }} >
               <AutoAwesomeIcon fontSize="small" />
             </IconButton>
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-          blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-          neque doloribus, cupiditate num laborum fugiat deleniti? Eum
-          quasi quidem quibusdam.
+              {healthBenefits[Math.floor(Math.random() * 15)]}
             <IconButton sx={{ color: '#006b76' }} >
               <EmojiNatureOutlinedIcon fontSize="large" />
             </IconButton>

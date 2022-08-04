@@ -21,6 +21,7 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import colors from '../../constants/colors';
 import { setRole } from "store/fitness/actions/creators";
+import TryIcon from '@mui/icons-material/Try';
 
 const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
   let history = useHistory();
@@ -37,6 +38,10 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
   const isTextInUrl = (text) => {
     return location.pathname.indexOf(text) > -1;
   }
+
+  const openInNewTab = () => {
+    window.open('https://google.com', '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <Styles>
@@ -134,6 +139,16 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
                     <EngineeringIcon sx={{ color: isTextInUrl('/construct-workout') ? colors.motifitGreen : "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'Construct My Workout'} />
+                </ListItemButton>
+              </ListItem>
+              
+              <Divider />
+              <ListItem disablePadding>
+                <ListItemButton onClick={() => openInNewTab()}>
+                  <ListItemIcon>
+                    <TryIcon sx={{ color: "white" }} />
+                  </ListItemIcon>
+                  <ListItemText primary={'Give Us Your Feedback'} />
                 </ListItemButton>
               </ListItem>
           </List>
