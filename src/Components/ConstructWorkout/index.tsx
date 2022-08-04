@@ -15,6 +15,8 @@ import MotifitTitle from 'Components/reusable/MotifitTitle';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import colors from '../../constants/colors';
 import { Typography } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLeftRed, setRightRed } from 'store/constructMyWorkout/actions/creators';
 
 function not(a: readonly number[], b: readonly number[]) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -30,11 +32,17 @@ function union(a: readonly number[], b: readonly number[]) {
 
 
 const ConstructWorkout: React.FunctionComponent<{}> = () => {
-  let history = useHistory();  
+  let history = useHistory();
+
+  const dispatch = useDispatch();
+  const rightRed = useSelector((state: any) => state.constructMyWorkout.right);
+  const leftRed = useSelector((state: any) => state.constructMyWorkout.left);
+  const moves = useSelector((state: any) => state.constructMyWorkout.moves);
+  const myWorkout = useSelector((state: any) => state.constructMyWorkout.myWorkout);
 
   const [checked, setChecked] = React.useState<readonly number[]>([]);
-  const [left, setLeft] = React.useState<readonly number[]>([0, 1, 2, 3]);
-  const [right, setRight] = React.useState<readonly number[]>([4, 5, 6, 7]);
+  const [left, setLeft] = React.useState<readonly number[]>(leftRed);
+  const [right, setRight] = React.useState<readonly number[]>(rightRed);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
@@ -64,12 +72,18 @@ const ConstructWorkout: React.FunctionComponent<{}> = () => {
   };
 
   const handleCheckedRight = () => {
+    dispatch(setRightRed(right.concat(leftChecked)));
+    dispatch(setLeftRed(not(left, leftChecked)));
+
     setRight(right.concat(leftChecked));
     setLeft(not(left, leftChecked));
     setChecked(not(checked, leftChecked));
   };
 
   const handleCheckedLeft = () => {
+    dispatch(setRightRed(not(right, rightChecked)));
+    dispatch(setLeftRed(left.concat(rightChecked)));
+
     setLeft(left.concat(rightChecked));
     setRight(not(right, rightChecked));
     setChecked(not(checked, rightChecked));
@@ -128,7 +142,7 @@ const ConstructWorkout: React.FunctionComponent<{}> = () => {
                   }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`List item ${value + 1}`} />
+              <ListItemText id={labelId} primary={`${moves.filter(item => item.id === value)?.pop()?.title}`} />
             </ListItem>
           );
         })}
@@ -176,6 +190,9 @@ const ConstructWorkout: React.FunctionComponent<{}> = () => {
         startIcon={<SportsGymnasticsIcon />} 
         variant="contained"
         disabled={right.length < 5}
+        onClick={() => {
+          history.push('/workout-in-progress/' + myWorkout.id, {workout: myWorkout})
+        }}
       >Start my custom workout</Button> 
 
     </Styles>
