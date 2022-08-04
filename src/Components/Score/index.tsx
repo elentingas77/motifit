@@ -22,15 +22,6 @@ const Score: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
 
   const feedback = useSelector((state: any) => state.fitness.feedback);
-
-  const [ourText, setOurText] = React.useState("I am making great progress and becoming healthier with Motifit.");
-  const msg = new SpeechSynthesisUtterance();
-
-  const speechHandler = (msg) => {
-    msg.text = ourText;
-    window.speechSynthesis.speak(msg);
-  }
-
   const { completedWorkouts, completedChallenges, score, calories } = feedback;
 
   const shareText = `I am making great progress and becoming healthier with Motifit. I have completed ${completedWorkouts} workout${completedWorkouts !== 1 ? 's' : ''}, ${completedChallenges} challenge${completedChallenges !== 1 ? 's' : ''} and burned ${calories} calories. My overall score is ${score}.`;
@@ -78,10 +69,6 @@ const Score: React.FunctionComponent<{}> = () => {
       <Button onClick={() => history.push('/workouts')} 
         sx={{ bgcolor: '#cddc39', color: 'black', width: '350px', marginLeft: 'auto', marginRight: 'auto'}} startIcon={<EmojiEventsTwoToneIcon />} variant="contained">
           Start a new workout</Button>
-
-      
-      <Button onClick={() => speechHandler(msg)}>Motifit</Button>
-
     </Styles>
   )
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useLocation } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
-import { Button, IconButton, Typography } from '@mui/material'
+import { Alert, Button, IconButton, Snackbar, Typography } from '@mui/material'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import GolfCourseTwoToneIcon from '@mui/icons-material/GolfCourseTwoTone';
 import colors from '../../constants/colors'
@@ -18,6 +18,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   const { id, title, role, workoutInProgress } = location?.state?.workout;
 
   const moves = useSelector((state: any) => state.fitness.moves);
+  const motivationalMessages = useSelector((state: any) => state.fitness.motivationalMessages);
   const dispatch = useDispatch();
 
   const [currentMoveIndex, setCurrentMoveIndex] = React.useState(0);
@@ -28,6 +29,8 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   
   const [currentCalories, setCurrentCalories] = React.useState(0);
   const [currentScore, setCurrentScore] = React.useState(0);
+
+  const [open, setOpen] = React.useState(false);
 
   const msg = new SpeechSynthesisUtterance();
 
@@ -59,6 +62,15 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
       history.push('/score')
     }
   }, [currentWorkoutId]);
+
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   return (
     <Styles>
@@ -99,7 +111,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
       <div style={{ display: 'flex', flexDirection: 'column' }} >
         <CountdownCircleTimer
               isPlaying
-              duration={3}
+              duration={6}
               colors={['#9900ef', '#ff6900', '#fcb900', '#7bdcb5', '#eb144c', '#F7B801', '#A30000']}
               colorsTime={[59, 40, 30, 20, 10, 5]}
               onComplete={() => {
@@ -122,11 +134,15 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
                   setCurrentMove(move);
                   setCurrentMoveIndex(currentMoveIndex + 1);
                   speechHandler(move?.instructions);
+                  setOpen(true);
+                  speechHandler(motivationalMessages[(currentMoveIndex) % 8 ]);
                   return { shouldRepeat: true };
                 } else if (isRest) {
                   setCurrentMoveIndex(currentMoveIndex + 1);
                   setIsRestMove(true)
                   speechHandler('Rest time!');
+                  setOpen(true);
+                  speechHandler(motivationalMessages[(currentMoveIndex) % 8 ]);
                   return { shouldRepeat: true };
                 } else {
                   setIsRestMove(false);
@@ -209,6 +225,13 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
       </div>
       </div>
       {/* <Button onClick={() => speechHandler(msg)}>Motifit</Button> */}
+
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          {motivationalMessages[(currentMoveIndex - 1) % 8 ]}
+        </Alert>
+      </Snackbar>
+    
     </Styles>
   )
 }

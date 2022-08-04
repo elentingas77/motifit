@@ -305,7 +305,7 @@ export const initialState: State = {
     score: 0,
   },
   healthBenefits: ['A random health benefit 1', 'A random health benefit 1', 'A random health benefit 1', 'A random health benefit 1', 'A random health benefit 1', 'A random health benefit 1'],
-  motivationalMessages: ['A random motivational message 1', 'A random motivational message 1', 'A random motivational message 1', 'A random motivational message 1', 'A random motivational message 1', 'A random motivational message 1'],
+  motivationalMessages: ['You are doing so great!', 'Amazing job!', 'Hard work pays off!', 'You are so brave!', 'Keep it up!', 'Do not give up!', 'Keep up the great work!', 'You are unstoppable!'],
   moves: [
     {
       id: 1,
