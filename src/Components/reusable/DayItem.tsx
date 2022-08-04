@@ -30,7 +30,10 @@ const DayItem: React.FunctionComponent<Props> = ({
 
     let history = useHistory();  
     const workouts = useSelector((state: any) => state.fitness.workouts);
+    const role = useSelector((state: any) => state.fitness.role);
     const dispatch = useDispatch();
+
+    const roleWorkouts = [...workouts].filter((item) => item.role === role);
 
     const handleWorkoutChange = (event: any) => {
       dispatch(setWorkoutForDay(id, event?.target?.value))
@@ -68,7 +71,7 @@ const DayItem: React.FunctionComponent<Props> = ({
           disabled={isDone}
         >
           <MenuItem key={0} value={0}>Rest Day</MenuItem>
-          {workouts.map(({ id, title }) => { 
+          {roleWorkouts.map(({ id, title }) => { 
             return (
               <MenuItem key={id} value={id}>{title}</MenuItem>
             );

@@ -68,6 +68,10 @@ const Challenges: React.FunctionComponent<{}> = () => {
         startIcon={<EmojiFlagsOutlinedIcon />} 
         variant="contained"
         size={'small'}
+        onClick={() => {
+          const randomChallenge = challenges[Math.floor(Math.random() * challenges.length)]
+          history.push('/challenge-in-progress/' + randomChallenge.id, {challenge: randomChallenge})
+         }}
       >Start a random challenge</Button> 
       </Styles>
   )

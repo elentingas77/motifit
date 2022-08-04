@@ -16,6 +16,8 @@ const Workouts: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
 
   const workouts = useSelector((state: any) => state.fitness.workouts);
+  const role = useSelector((state: any) => state.fitness.role);
+  const roleWorkouts = [...workouts].filter((item) => item.role === role);
   
   const responsive = {
     desktop: {
@@ -70,6 +72,10 @@ const Workouts: React.FunctionComponent<{}> = () => {
         startIcon={<InsertEmoticonIcon />} 
         variant="contained"
         size={'small'}
+        onClick={() => {
+          const randomWorkout = roleWorkouts[Math.floor(Math.random() * roleWorkouts.length)]
+          history.push('/workout-in-progress/' + randomWorkout.id, {workout: randomWorkout})
+         }}
       >Start a random workout</Button>
 
         <Typography sx={{ padding: 2 }} variant="body2">

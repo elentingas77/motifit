@@ -18,54 +18,54 @@ export const initialState: State = {
   workouts: [
     {
       id: 2345,
-      title: 'Full Bodytest',
+      title: 'Full Bodyt b',
       description: 'this workout focuses on the muscles of the entire body',
-      role: 'beginner',
+      role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
       workoutInProgress: [1, 2, 3 , 4, 0, 6, 7, 8],
     },
     {
       id: 43535,
-      title: 'Full Body',
+      title: 'Full Body b',
       description: 'this workout focuses on the muscles of the entire body',
-      role: 'beginner',
+      role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
       workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
     },
     {
       id: 2453,
-      title: 'Full Body',
+      title: 'Full Body i',
       description: 'this workout focuses on the muscles of the entire body',
-      role: 'beginner',
+      role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
       workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
     },
     {
       id: 234435,
-      title: 'Full Body',
+      title: 'Full Body i',
       description: 'this workout focuses on the muscles of the entire body',
-      role: 'beginner',
+      role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
       workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
     },
     {
       id: 234245,
-      title: 'Full Body',
+      title: 'Full Body e',
       description: 'this workout focuses on the muscles of the entire body',
-      role: 'beginner',
+      role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
       workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
     },
     {
       id: 2342345,
-      title: 'Full Body',
+      title: 'Full Body e',
       description: 'this workout focuses on the muscles of the entire body',
-      role: 'beginner',
+      role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
       workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
@@ -399,7 +399,21 @@ const calculateCaloriesBurned = (state, plan): number => {
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case Constants.SET_ROLE:
-      return { ...state, role: action.role}
+      let beginnerWorkouts = [...state.workouts].filter((item) => item.role === 'Beginner');
+      let intermediateWorkouts = [...state.workouts].filter((item) => item.role === 'Intermediate');
+      let expertWorkouts = [...state.workouts].filter((item) => item.role === 'Expert');
+
+      let newWorkoutsList: any = [];
+
+      if (action.role === 'Beginner') {
+        newWorkoutsList = [...beginnerWorkouts, ...intermediateWorkouts, ...expertWorkouts]
+      } else if (action.role === "Intermediate") {
+        newWorkoutsList = [...intermediateWorkouts, ...expertWorkouts, ...beginnerWorkouts]
+      } else {
+        newWorkoutsList = [...expertWorkouts, ...intermediateWorkouts, ...beginnerWorkouts]
+      }
+
+      return { ...state, role: action.role, workouts: newWorkoutsList}
     case Constants.START_FROM_SCRATCH:
       return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan],
         caloriesToBurnThirtyDays: 0,
