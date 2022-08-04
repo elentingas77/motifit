@@ -10,18 +10,20 @@ export interface State {
   healthBenefits: Array<string>
   motivationalMessages: Array<string>
   moves: Array<any>
+  caloriesBurnedThirtyDays: number
+  caloriesToBurnThirtyDays: number
 }
 
 export const initialState: State = {
   workouts: [
     {
       id: 2345,
-      title: 'Full Body',
+      title: 'Full Bodytest',
       description: 'this workout focuses on the muscles of the entire body',
       role: 'beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [1, 2, 3 , 4, 0, 6, 7, 8],
     },
     {
       id: 43535,
@@ -294,6 +296,8 @@ export const initialState: State = {
       isRestDay: false,
     },
   ],
+  caloriesBurnedThirtyDays: 0,
+  caloriesToBurnThirtyDays: 0,
   feedback: {
     completedWorkouts: 0,
     completedChallenges: 0,
@@ -305,7 +309,7 @@ export const initialState: State = {
   moves: [
     {
       id: 1,
-      title: 'Side lungdes',
+      title: 'Side lungdes1',
       score: 5,
       calories: 20,
       imagePath: 'workoutItem.jpg',

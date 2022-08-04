@@ -39,8 +39,6 @@ const Workouts: React.FunctionComponent<{}> = () => {
   return (
     <Styles>
       <MotifitTitle>Workouts</MotifitTitle>
-
-
       <Carousel
         responsive={responsive}
         keyBoardControl={true}

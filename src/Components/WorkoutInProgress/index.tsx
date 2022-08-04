@@ -1,58 +1,97 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 import { useHistory, useLocation } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
-import ScoreBG from '../../assets/images/scoreBG.jpg'
 import { Button, IconButton, Typography } from '@mui/material'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import GolfCourseTwoToneIcon from '@mui/icons-material/GolfCourseTwoTone';
 import colors from '../../constants/colors'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import Rest from '../../assets/images/rest.jpg';
 
 const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   let history = useHistory(); 
   let location = useLocation(); 
 
-  const [speakerText, setSpeakerText] = React.useState("I am making great progress and becoming healthier with Motifit.");
+  const { id, title, role, workoutInProgress } = location?.state?.workout;
+
+  const moves = useSelector((state: any) => state.fitness.moves);
+  const [currentMoveIndex, setCurrentMoveIndex] = React.useState(0);
+  const [currentMove, setCurrentMove] = React.useState<any>(null);
+  const [isRestMove, setIsRestMove] = React.useState<boolean>(false);
+  const [currentWorkoutId, setCurrentWorkoutId] = React.useState<any>(id);
+
+  
+  const [currentCalories, setCurrentCalories] = React.useState(0);
+  const [currentScore, setCurrentScore] = React.useState(0);
+
+  const [speakerText, setSpeakerText] = React.useState<any>('')
   const msg = new SpeechSynthesisUtterance();
 
-  const { id, title, role } = location?.state?.workout;
-  console.log(id, title, role);
-
-  const speechHandler = (msg) => {
+  const speechHandler = () => {
     msg.text = speakerText;
     window.speechSynthesis.speak(msg);
   }
+
+  React.useEffect(() => {
+    let move = moves?.filter(({ id }) => id === workoutInProgress[currentMoveIndex])?.pop()
+    let isRestMove = workoutInProgress[currentMoveIndex] === 0;
+
+    console.log('setting START move: ', move, isRestMove);
+
+    if (move) {
+      setIsRestMove(false);
+      setCurrentMove(move);
+      setCurrentMoveIndex(currentMoveIndex + 1);
+      setSpeakerText(move?.instructions);
+      speechHandler();
+    } else if (isRestMove) {
+      setCurrentMoveIndex(currentMoveIndex + 1);
+      setSpeakerText('Rest time!');
+      speechHandler();
+      setIsRestMove(true)
+    } else {
+      setIsRestMove(false);
+      setCurrentMoveIndex(0);
+      setCurrentMove(null);
+      setCurrentWorkoutId(null);
+      history.push('/score')
+    }
+  }, [currentWorkoutId]);
 
   return (
     <Styles>
       <MotifitTitle>{title}</MotifitTitle>
     
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <div style={{ display: 'flex', flexDirection: 'column' }} >
+      <div style={{ display: 'flex', flexDirection: 'column', width: '900px' }} >
       <div style={{ marginLeft: 32, display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-        <Typography sx={{ width: '300' }} variant="h6" >{'Workout move'}</Typography>
+        <Typography sx={{ width: '300' }} variant="h6" >{isRestMove ? 'Rest Time!' : currentMove?.title}</Typography>
         <IconButton>
           <GolfCourseTwoToneIcon sx={{ color: colors.motifitPurple }} />
         </IconButton>
-        <Typography variant="h6" >{' 5 points, 20 calories'}</Typography>
+        {!isRestMove && 
+        <Typography variant="h6" >
+          {' ' + currentMove?.score + ' points, ' + currentMove?.calories + ' calories'}
+        </Typography>}
       </div>
 
       
-      <div style={{ marginLeft: 20, display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
+      {!isRestMove && <div style={{ marginLeft: 20, display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
         <IconButton>
           <InfoOutlinedIcon sx={{ color: colors.motifitPurple }} />
         </IconButton>
         <Typography sx={{ maxWidth: '900px', marginRight: 5 }} variant="subtitle1" >
-          {speakerText}{speakerText}{speakerText}{speakerText}
+          {currentMove?.instructions}
         </Typography>
+      </div>}
 
-      </div>
       <img 
         alt="fitness workout move"
         width={500}
         height={500}
-        src={ScoreBG} 
+        src={ currentMove?.imagePath && !isRestMove ? require(`../../assets/images/${currentMove?.imagePath}`) : Rest} 
         style={{ borderRadius: '15px', marginTop: 11, marginBottom: 11, marginLeft: 200, marginRight: 'auto'}}
       />
       </div>
@@ -60,12 +99,43 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
       <div style={{ display: 'flex', flexDirection: 'column' }} >
         <CountdownCircleTimer
               isPlaying
-              duration={6}
+              duration={4}
               colors={['#9900ef', '#ff6900', '#fcb900', '#7bdcb5', '#eb144c', '#F7B801', '#A30000']}
               colorsTime={[59, 40, 30, 20, 10, 5]}
               onComplete={() => {
-                console.log('completed');
-                return { shouldRepeat: true };
+                
+                if (!isRestMove) {
+                  setCurrentCalories(currentCalories + currentMove?.calories);
+                  setCurrentScore(currentScore + currentMove?.score);
+                }
+
+                let move = moves?.filter(({ id }) => id === workoutInProgress[currentMoveIndex])?.pop()
+                let isRest = workoutInProgress[currentMoveIndex] === 0;
+
+                console.log('setting next move: ', move, isRest);
+
+                if (move) {
+                  setIsRestMove(false);
+                  setCurrentMove(move);
+                  setCurrentMoveIndex(currentMoveIndex + 1);
+                  setSpeakerText(move?.instructions);
+                  speechHandler();
+                  return { shouldRepeat: true };
+                } else if (isRest) {
+                  setCurrentMoveIndex(currentMoveIndex + 1);
+                  setIsRestMove(true)
+                  setSpeakerText('Rest time!');
+                  speechHandler();
+                  return { shouldRepeat: true };
+                } else {
+                  setIsRestMove(false);
+                  setCurrentMoveIndex(0);
+                  setCurrentMove(null);
+                  setCurrentWorkoutId(null);
+                  setCurrentCalories(0);
+                  setCurrentScore(0);
+                  history.push('/score')
+                }
               }}
             >
               {({ remainingTime }) => <Typography variant='h4'>{remainingTime}</Typography>}
@@ -81,7 +151,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
           marginTop: '20px',
         }} 
         color={colors.motifitPurple} variant="button">
-          Move: {'2'}/{'20'}
+          Move: {currentMoveIndex}/{workoutInProgress.length}
         </Typography>
 
         <Typography sx={{ 
@@ -94,7 +164,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
           marginTop: '20px',
         }} 
         color={colors.motifitPurple} variant="button">
-          Calories: {'2343'}
+          Calories: {currentCalories}
         </Typography>
 
         <Typography sx={{ 
@@ -108,7 +178,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = () => {
           marginBottom: '40px',
         }} 
         color={colors.motifitPurple} variant="button">
-          Score: {'972'}
+          Score: {currentScore}
         </Typography>
 
         <Typography sx={{ 
