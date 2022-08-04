@@ -360,12 +360,51 @@ export const initialState: State = {
   ]
 }
 
+const calculateCaloriesToBurn = (state, plan): number => {
+  let workouts = [...state.workouts]
+
+  const result = plan?.reduce(
+    (acc, { workoutId }) => {
+    let currentWorkout = workouts.filter((item) => item.id === workoutId)?.pop()
+
+    if (currentWorkout) {
+      return acc + currentWorkout?.calories;
+    }
+    return acc
+    },
+    0
+  );
+
+  return result;
+}
+
+const calculateCaloriesBurned = (state, plan): number => {
+  let workouts = [...state.workouts]
+
+  const result = plan?.reduce(
+    (acc, { workoutId, isDone }) => {
+    let currentWorkout = workouts.filter((item) => item.id === workoutId && isDone)?.pop()
+
+    if (currentWorkout) {
+      return acc + currentWorkout?.calories;
+    }
+    return acc
+    },
+    0
+  );
+
+  return result;
+}
+
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case Constants.SET_ROLE:
       return { ...state, role: action.role}
     case Constants.START_FROM_SCRATCH:
-      return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan]}
+      return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan],
+        caloriesToBurnThirtyDays: 0,
+        caloriesBurnedThirtyDays: 0
+      }
     case Constants.AUTOMATICALLY_GENERATE:
       return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan]}
     case Constants.MARK_DAY_AS_DONE:
@@ -386,7 +425,15 @@ export default (state: State = initialState, action: Action): State => {
           }
         });
 
-      return { ...state, thirtyDayPlan: [...newPlan ]}
+      
+      let res3 = calculateCaloriesToBurn(state, newPlan);
+      let res4 = calculateCaloriesBurned(state, newPlan);
+
+      return { ...state, 
+          thirtyDayPlan: [...newPlan ], 
+          caloriesToBurnThirtyDays: res3,
+          caloriesBurnedThirtyDays: res4,
+        }
     case Constants.SET_WORKOUT_FOR_DAY:
       let newPlan2 = [...state.thirtyDayPlan ]?.
         map(({ id, isDone, workoutId }) => {
@@ -405,7 +452,13 @@ export default (state: State = initialState, action: Action): State => {
           }
         });
 
-      return { ...state, thirtyDayPlan: [...newPlan2 ]}
+      let res1 = calculateCaloriesToBurn(state, newPlan2);
+      let res2 = calculateCaloriesBurned(state, newPlan2);
+
+      return { ...state, thirtyDayPlan: [...newPlan2 ],
+        caloriesToBurnThirtyDays: res1,
+        caloriesBurnedThirtyDays: res2
+      }
     case Constants.ADD_CALORIES:
       return { ...state, feedback: { ...state.feedback, calories: state.feedback.calories + action.calories }}
     case Constants.ADD_SCORE:

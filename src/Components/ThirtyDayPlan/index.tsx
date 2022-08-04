@@ -57,6 +57,8 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
 
   const thirtyDayPlan = useSelector((state: any) => state.fitness.thirtyDayPlan);
+  const caloriesBurnedThirtyDays = useSelector((state: any) => state.fitness.caloriesBurnedThirtyDays);
+  const caloriesToBurnThirtyDays = useSelector((state: any) => state.fitness.caloriesToBurnThirtyDays);
   const dispatch = useDispatch();
 
   return (
@@ -111,23 +113,24 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
               paddingRight: '5px',
               paddingLeft: '5px',
               width: 'min-content',
-              minWidth: '400px',
+              minWidth: '500px',
               marginTop: '20px',
               marginLeft: 'auto',
               marginRight: 'auto',
             }} 
             color={colors.motifitPurple} variant="button">
-          Calories burned in 30 days
+          Calories burned in 30 days: {caloriesBurnedThirtyDays}/{caloriesToBurnThirtyDays}
         </Typography>
 
     <div style={{ background: colors.motifitPink, borderRadius: '15px', height: '85px', marginTop: '10px' }}>
       <CaloriesSlider
         valueLabelDisplay="on"
         aria-label="pretto slider"
-        defaultValue={341}
+        defaultValue={caloriesBurnedThirtyDays}
         min={0}
-        max={3532}
+        max={caloriesToBurnThirtyDays}
         disabled
+        value={caloriesBurnedThirtyDays}
         />
     </div>
 
