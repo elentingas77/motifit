@@ -117,183 +117,153 @@ export const initialState: State = {
   thirtyDayPlan: [
     {
       id: 1,
-      isDone: true,
+      isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 2,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 3,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 4,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 5,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 6,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 7,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 8,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 9,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 10,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 11,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 12,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 13,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 14,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 15,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 16,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 17,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 18,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 19,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 20,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 21,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 22,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 23,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 24,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 25,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 26,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 27,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 28,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 29,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
     {
       id: 30,
       isDone: false,
       workoutId: null,
-      isRestDay: false,
     },
   ],
   caloriesBurnedThirtyDays: 0,
@@ -394,14 +364,56 @@ export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case Constants.SET_ROLE:
       return { ...state, role: action.role}
-      case Constants.ADD_CALORIES:
-        return { ...state, feedback: { ...state.feedback, calories: state.feedback.calories + action.calories }}
-      case Constants.ADD_SCORE:
-        return { ...state, feedback: { ...state.feedback, score: state.feedback.score + action.score }}
-      case Constants.ADD_WORKOUT:
-        return { ...state, feedback: { ...state.feedback, completedWorkouts: state.feedback.completedWorkouts + 1 }}
-      case Constants.ADD_CHALLENGE:
-        return { ...state, feedback: { ...state.feedback, completedChallenges: state.feedback.completedChallenges + 1 }}
+    case Constants.START_FROM_SCRATCH:
+      return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan]}
+    case Constants.AUTOMATICALLY_GENERATE:
+      return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan]}
+    case Constants.MARK_DAY_AS_DONE:
+      let newPlan = [...state.thirtyDayPlan ]?.
+        map(({ id, isDone, workoutId }) => {
+          if (id === action.day) {
+            return {
+              id,
+              isDone: action.isDone,
+              workoutId,
+            }
+          } else {
+            return {
+              id,
+              isDone,
+              workoutId,
+            }
+          }
+        });
+
+      return { ...state, thirtyDayPlan: [...newPlan ]}
+    case Constants.SET_WORKOUT_FOR_DAY:
+      let newPlan2 = [...state.thirtyDayPlan ]?.
+        map(({ id, isDone, workoutId }) => {
+          if (id === action.day) {
+            return {
+              id,
+              isDone,
+              workoutId: action.workoutId,
+            }
+          } else {
+            return {
+              id,
+              isDone,
+              workoutId,
+            }
+          }
+        });
+
+      return { ...state, thirtyDayPlan: [...newPlan2 ]}
+    case Constants.ADD_CALORIES:
+      return { ...state, feedback: { ...state.feedback, calories: state.feedback.calories + action.calories }}
+    case Constants.ADD_SCORE:
+      return { ...state, feedback: { ...state.feedback, score: state.feedback.score + action.score }}
+    case Constants.ADD_WORKOUT:
+      return { ...state, feedback: { ...state.feedback, completedWorkouts: state.feedback.completedWorkouts + 1 }}
+    case Constants.ADD_CHALLENGE:
+      return { ...state, feedback: { ...state.feedback, completedChallenges: state.feedback.completedChallenges + 1 }}
     default:
       return state
   }

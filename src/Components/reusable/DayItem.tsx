@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Checkbox, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import MotifitTitle from './MotifitTitle';
+import { markDayAsDone, setWorkoutForDay } from 'store/fitness/actions/creators';
+import { useHistory } from "react-router-dom"
 
 interface Props {
   id: any
@@ -24,17 +26,18 @@ const CustomStyle = styled.div`
 `
 
 const DayItem: React.FunctionComponent<Props> = ({ 
-    id, isDone, workoutId, isRestDay, onClick = () => {} }) => {
+    id, isDone, workoutId, onClick = () => {} }) => {
 
+    let history = useHistory();  
     const workouts = useSelector((state: any) => state.fitness.workouts);
-    const [workout, setWorkout] = React.useState('');
+    const dispatch = useDispatch();
 
     const handleWorkoutChange = (event: any) => {
-      setWorkout(event?.target?.value);
+      dispatch(setWorkoutForDay(id, event?.target?.value))
     };
 
-    const handleIsDoneChange = (event: any) => {
-      console.log(event?.taget?.value);
+    const handleIsDoneChange = () => {
+      dispatch(markDayAsDone(id, !isDone))
     };
 
   return (
@@ -43,7 +46,13 @@ const DayItem: React.FunctionComponent<Props> = ({
         <MotifitTitle>
           {id}
         </MotifitTitle>
-        <Button disabled={isDone} size='small' onClick={onClick} sx={{ bgcolor: '#9575cd', color: 'white'}} startIcon={<FitnessCenterIcon />} variant="contained">Start</Button>
+        <Button 
+          disabled={isDone || workoutId === 0 || workoutId === null} 
+          size='small' 
+          onClick={() => history.push('/workout-in-progress/' + workoutId, { workout: workouts.filter(({ id }) => id === workoutId)?.pop()})}
+          sx={{ bgcolor: '#9575cd', color: 'white'}} 
+          startIcon={<FitnessCenterIcon />} variant="contained"
+        >Start</Button>
         <Checkbox onChange={handleIsDoneChange} checked={isDone} color="success" />  
       </div>
 
@@ -52,12 +61,13 @@ const DayItem: React.FunctionComponent<Props> = ({
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={workout}
+          value={workoutId}
           onChange={handleWorkoutChange}
           label="Workout"
           size='small'
           disabled={isDone}
         >
+          <MenuItem key={0} value={0}>Rest Day</MenuItem>
           {workouts.map(({ id, title }) => { 
             return (
               <MenuItem key={id} value={id}>{title}</MenuItem>

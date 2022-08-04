@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
@@ -8,6 +8,7 @@ import LayersClearOutlinedIcon from '@mui/icons-material/LayersClearOutlined';
 import { Box, Button, Grid, Slider, Typography } from '@mui/material';
 import DayItem from '../reusable/DayItem';
 import colors from '../../constants/colors';
+import { automaticallyGenerate, startFromScratch } from 'store/fitness/actions/creators'
 
 const CaloriesSlider = styled(Slider)({
   marginTop: 30,
@@ -56,6 +57,7 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
 
   const thirtyDayPlan = useSelector((state: any) => state.fitness.thirtyDayPlan);
+  const dispatch = useDispatch();
 
   return (
     <Styles>
@@ -65,6 +67,7 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
           startIcon={<AutoFixHighOutlinedIcon />} 
           variant="contained"
           size={'small'}
+          onClick={() => dispatch(automaticallyGenerate())}
         >Automatically generate</Button>
         <MotifitTitle>30 day plan</MotifitTitle>
         <Button 
@@ -72,6 +75,7 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
           startIcon={<LayersClearOutlinedIcon />} 
           variant="contained"
           size={'small'}
+          onClick={() => dispatch(startFromScratch())}
         >Start from scratch</Button>
       </div>  
 
