@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Checkbox, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { workouts } from '../Workouts';
+import { useSelector } from 'react-redux';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import MotifitTitle from './MotifitTitle';
 
@@ -26,6 +26,7 @@ const CustomStyle = styled.div`
 const DayItem: React.FunctionComponent<Props> = ({ 
     id, isDone, workoutId, isRestDay, onClick = () => {} }) => {
 
+    const workouts = useSelector((state: any) => state.fitness.workouts);
     const [workout, setWorkout] = React.useState('');
 
     const handleWorkoutChange = (event: any) => {

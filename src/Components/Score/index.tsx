@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
 import ScoreBG from '../../assets/images/scoreBG.jpg'
@@ -18,8 +18,10 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-const Score: React.FunctionComponent<{}> = ({ }) => {
+const Score: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
+
+  const feedback = useSelector((state: any) => state.fitness.feedback);
 
   const [ourText, setOurText] = React.useState("I am making great progress and becoming healthier with Motifit.");
   const msg = new SpeechSynthesisUtterance();
@@ -29,16 +31,19 @@ const Score: React.FunctionComponent<{}> = ({ }) => {
     window.speechSynthesis.speak(msg);
   }
 
-  const shareText = 'I am making great progress and becoming healthier with Motifit.'
+  const { completedWorkouts, completedChallenges, score, calories } = feedback;
+
+  const shareText = `I am making great progress and becoming healthier with Motifit. I have completed ${completedWorkouts} workouts, ${completedChallenges} challenges and burned ${calories} calories. My overall score is ${score}.`;
+  const url = `motifit.com`;
 
   return (
     <Styles>
       <MotifitTitle>Score</MotifitTitle>
       
       <div style={{ marginLeft: 'auto', marginRight: 'auto', width: 300, display: 'flex', justifyContent: 'space-between' }}>
-        <TwitterShareButton url="motifit.com" title={shareText} ><TwitterIcon round={true} /></TwitterShareButton>
-        <WhatsappShareButton url="motifit.com" title={shareText} ><WhatsappIcon round={true} /></WhatsappShareButton>
-        <TumblrShareButton url="motifit.com" caption={shareText} ><TumblrIcon round={true} /></TumblrShareButton> 
+        <TwitterShareButton url={url} title={shareText} ><TwitterIcon round={true} /></TwitterShareButton>
+        <WhatsappShareButton url={url} title={shareText} ><WhatsappIcon round={true} /></WhatsappShareButton>
+        <TumblrShareButton url={url} caption={shareText} ><TumblrIcon round={true} /></TumblrShareButton> 
       </div>
 
       <div 
@@ -54,13 +59,13 @@ const Score: React.FunctionComponent<{}> = ({ }) => {
 
           {`You have completed`}
           <br />
-          {`757 workouts, 28 challenges`}
+          {`${completedWorkouts} workouts, ${completedChallenges} challenges`}
           <br />
-          {`and burned 4323 calores.`}
+          {`and burned ${calories} calories.`}
           <br />
           {`Your overall score`}
           <br />
-          {`is 87876.`}
+          {`is ${score}.`}
           <br />
           
           <IconButton sx={{ color: 'black' }} >
@@ -81,18 +86,7 @@ const Score: React.FunctionComponent<{}> = ({ }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    // transferMoneyLoading: state.accounts.transferMoneyLoading,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    // transferMoney: (from, to, amount) => dispatch(transferMoney(from, to, amount))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Score)
+export default Score;
 
 const Styles = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -20,23 +20,22 @@ import EngineeringIcon from '@mui/icons-material/Engineering';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import colors from '../../constants/colors';
+import { setRole } from "store/fitness/actions/creators";
 
 const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
   let history = useHistory();
-  const [fitnessLevel, setFitnessLevel] = React.useState("Beginner");
+  let location = useLocation();
+  const role = useSelector((state: any) => state.fitness.role);
+  const dispatch = useDispatch();
 
   const handleFitnessLevelChange = (event: any) => {
-    setFitnessLevel(event.target.value as string);
+    dispatch(setRole(event.target.value as string));
   };
 
   React.useEffect(() => {}, []);
 
-  function handleClickMakeTransaction() {
-    history.push("/make-transaction");
-  }
-
-  function handleClickCreateUser() {
-    history.push("/create-user");
+  const isTextInUrl = (text) => {
+    return location.pathname.indexOf(text) > -1;
   }
 
   return (
@@ -63,7 +62,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
             <FormControl fullWidth sx={{ m: 1, minWidth: 160, color: 'white' }} size="small">
               <Select
                 id="fitness-level-select"
-                value={fitnessLevel}
+                value={role}
                 onChange={handleFitnessLevelChange}
               >
                 <MenuItem value={"Beginner"}>
@@ -99,7 +98,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => history.push('/workouts')}>
                   <ListItemIcon>
-                    <FitnessCenterRoundedIcon sx={{ color: "white" }} />
+                    <FitnessCenterRoundedIcon sx={{ color: isTextInUrl('/workouts') ? colors.motifitGreen : "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'Workouts'} />
                 </ListItemButton>
@@ -107,7 +106,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => history.push('/30-day-plan')}>
                   <ListItemIcon>
-                    <CalendarMonthRoundedIcon sx={{ color: "white" }} />
+                    <CalendarMonthRoundedIcon sx={{ color: isTextInUrl('/30-day-plan') ? colors.motifitGreen : "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'30 Day Plan'} />
                 </ListItemButton>
@@ -115,7 +114,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => history.push('/challenges')}>
                   <ListItemIcon>
-                    <EmojiEventsRoundedIcon sx={{ color: "white" }} />
+                    <EmojiEventsRoundedIcon sx={{ color: isTextInUrl('/challenges') ? colors.motifitGreen : "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'Challenges'} />
                 </ListItemButton>
@@ -123,7 +122,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => history.push('/score')}>
                   <ListItemIcon>
-                    <StarBorderPurple500RoundedIcon sx={{ color: "white" }} />
+                    <StarBorderPurple500RoundedIcon sx={{ color: isTextInUrl('/score') ? colors.motifitGreen : "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'Score'} />
                 </ListItemButton>
@@ -132,7 +131,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => history.push('/construct-workout')}>
                   <ListItemIcon>
-                    <EngineeringIcon sx={{ color: "white" }} />
+                    <EngineeringIcon sx={{ color: isTextInUrl('/construct-workout') ? colors.motifitGreen : "white" }} />
                   </ListItemIcon>
                   <ListItemText primary={'Construct My Workout'} />
                 </ListItemButton>
@@ -147,21 +146,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    // users: state.users.users,
-    // getUsersLoading: state.users.getUsersLoading,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // getUsers: () => dispatch(getUsers()),
-    // logout: () => dispatch(logout()),
-    // checkIfLoggedIn: () => dispatch(checkIfLoggedIn()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
 
 const Styles = styled.div`
   display: flex;

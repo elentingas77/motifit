@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
 import { useHistory, useLocation } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
 import ScoreBG from '../../assets/images/scoreBG.jpg'
@@ -10,7 +9,7 @@ import GolfCourseTwoToneIcon from '@mui/icons-material/GolfCourseTwoTone';
 import colors from '../../constants/colors'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
-const WorkoutInProgress: React.FunctionComponent<{}> = ({ }) => {
+const WorkoutInProgress: React.FunctionComponent<{}> = () => {
   let history = useHistory(); 
   let location = useLocation(); 
 
@@ -61,10 +60,13 @@ const WorkoutInProgress: React.FunctionComponent<{}> = ({ }) => {
       <div style={{ display: 'flex', flexDirection: 'column' }} >
         <CountdownCircleTimer
               isPlaying
-              duration={60}
+              duration={6}
               colors={['#9900ef', '#ff6900', '#fcb900', '#7bdcb5', '#eb144c', '#F7B801', '#A30000']}
               colorsTime={[59, 40, 30, 20, 10, 5]}
-              onComplete={() => console.log('completed')}
+              onComplete={() => {
+                console.log('completed');
+                return { shouldRepeat: true };
+              }}
             >
               {({ remainingTime }) => <Typography variant='h4'>{remainingTime}</Typography>}
             </CountdownCircleTimer>
@@ -132,18 +134,7 @@ const WorkoutInProgress: React.FunctionComponent<{}> = ({ }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    // transferMoneyLoading: state.accounts.transferMoneyLoading,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    // transferMoney: (from, to, amount) => dispatch(transferMoney(from, to, amount))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(WorkoutInProgress)
+export default WorkoutInProgress;
 
 const Styles = styled.div`
   display: flex;

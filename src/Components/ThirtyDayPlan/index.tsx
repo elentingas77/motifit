@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import MotifitTitle from 'Components/reusable/MotifitTitle'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
@@ -8,189 +8,6 @@ import LayersClearOutlinedIcon from '@mui/icons-material/LayersClearOutlined';
 import { Box, Button, Grid, Slider, Typography } from '@mui/material';
 import DayItem from '../reusable/DayItem';
 import colors from '../../constants/colors';
-
-export const days: any = [
-  {
-    id: 1,
-    isDone: true,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 2,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 3,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 4,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 5,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 6,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 7,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 8,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 9,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 10,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 11,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 12,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 13,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 14,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 15,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 16,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 17,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 18,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 19,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 20,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 21,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 22,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 23,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 24,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 25,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 26,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 27,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 28,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 29,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-  {
-    id: 30,
-    isDone: false,
-    workoutId: null,
-    isRestDay: false,
-  },
-];
 
 const CaloriesSlider = styled(Slider)({
   marginTop: 30,
@@ -235,8 +52,10 @@ const CaloriesSlider = styled(Slider)({
   },
 });
 
-const ThirtyDayPlan: React.FunctionComponent<{}> = ({ }) => {
+const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
+
+  const thirtyDayPlan = useSelector((state: any) => state.fitness.thirtyDayPlan);
 
   return (
     <Styles>
@@ -260,7 +79,7 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = ({ }) => {
 
     <Box sx={{ width: "100%", marginTop: 1 }}>
       <Grid container rowSpacing={0.5} columnSpacing={0.5}>
-        {days.map(({ id, isDone, workoutId, isRestDay }) => {
+        {thirtyDayPlan.map(({ id, isDone, workoutId, isRestDay }) => {
           return (
             <Grid key={id} item xs={2}>
               <DayItem 
@@ -312,18 +131,7 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = ({ }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    // transferMoneyLoading: state.accounts.transferMoneyLoading,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    // transferMoney: (from, to, amount) => dispatch(transferMoney(from, to, amount))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ThirtyDayPlan)
+export default ThirtyDayPlan;
 
 const Styles = styled.div`
   display: flex;

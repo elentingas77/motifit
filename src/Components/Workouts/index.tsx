@@ -1,71 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import WorkoutsListItem from '../reusable/WorkoutsListItem';
 import MotifitTitle from '../reusable/MotifitTitle';
 import { Button, IconButton, Typography } from '@mui/material';
-import colors from '../../constants/colors';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 import EmojiNatureOutlinedIcon from '@mui/icons-material/EmojiNatureOutlined';
 
-export const workouts: any = [
-  {
-    id: 2345,
-    title: 'Full Body',
-    description: 'this workout focuses on the muscles of the entire body',
-    role: 'beginner',
-    calories: 353,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 43535,
-    title: 'Full Body',
-    description: 'this workout focuses on the muscles of the entire body',
-    role: 'beginner',
-    calories: 353,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 2453,
-    title: 'Full Body',
-    description: 'this workout focuses on the muscles of the entire body',
-    role: 'beginner',
-    calories: 353,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 234435,
-    title: 'Full Body',
-    description: 'this workout focuses on the muscles of the entire body',
-    role: 'beginner',
-    calories: 353,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 234245,
-    title: 'Full Body',
-    description: 'this workout focuses on the muscles of the entire body',
-    role: 'beginner',
-    calories: 353,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 2342345,
-    title: 'Full Body',
-    description: 'this workout focuses on the muscles of the entire body',
-    role: 'beginner',
-    calories: 353,
-    imagePath: "workoutItem.jpg",
-  },
-];
-
-const Workouts: React.FunctionComponent<{}> = ({}) => {
+const Workouts: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
+
+  const workouts = useSelector((state: any) => state.fitness.workouts);
   
   const responsive = {
     desktop: {
@@ -145,18 +95,7 @@ const Workouts: React.FunctionComponent<{}> = ({}) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    // transferMoneyLoading: state.accounts.transferMoneyLoading,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    // transferMoney: (from, to, amount) => dispatch(transferMoney(from, to, amount))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Workouts)
+export default Workouts;
 
 const Styles = styled.div`
   display: flex;

@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import login from './login'
+import fitness from './fitness'
 import accounts from './accounts'
 import transactions from './transactions'
 import users from './users'
@@ -15,7 +15,7 @@ import browserHistory from '../browserHistory'
 const api = new API()
 
 const rootReducer: any = combineReducers({
-  login: login,
+  fitness: fitness,
   users: users,
   accounts: accounts,
   transactions: transactions

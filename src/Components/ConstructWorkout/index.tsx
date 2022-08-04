@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
@@ -30,7 +29,7 @@ function union(a: readonly number[], b: readonly number[]) {
 }
 
 
-const ConstructWorkout: React.FunctionComponent<{}> = ({ }) => {
+const ConstructWorkout: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
 
   const [checked, setChecked] = React.useState<readonly number[]>([]);
@@ -101,7 +100,6 @@ const ConstructWorkout: React.FunctionComponent<{}> = ({ }) => {
         sx={{
           width: 400,
           height: 530,
-          // bgcolor: 'background.paper',
           bgcolor: colors.darkRed,
           color: 'background.paper',
           overflow: 'auto',
@@ -184,19 +182,7 @@ const ConstructWorkout: React.FunctionComponent<{}> = ({ }) => {
   );
 }
 
-
-const mapStateToProps = state => {
-  return {
-    // transferMoneyLoading: state.accounts.transferMoneyLoading,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    // transferMoney: (from, to, amount) => dispatch(transferMoney(from, to, amount))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ConstructWorkout)
+export default ConstructWorkout;
 
 const Styles = styled.div`
   display: flex;

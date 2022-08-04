@@ -1,55 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ChallengesListItem from '../reusable/ChallengesListItem';
 import MotifitTitle from '../reusable/MotifitTitle';
 import { Button } from '@mui/material';
-import colors from '../../constants/colors';
 import EmojiFlagsOutlinedIcon from '@mui/icons-material/EmojiFlagsOutlined';
 
-const challenges: any = [
-  {
-    id: 2345,
-    title: 'Plank Challenge',
-    description: 'this workout focuses on the muscles of the entire body',
-    score: 564,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 234534,
-    title: 'Plank Challenge',
-    description: 'this workout focuses on the muscles of the entire body',
-    score: 564,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 232445,
-    title: 'Plank Challenge',
-    description: 'this workout focuses on the muscles of the entire body',
-    score: 564,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 242345,
-    title: 'Plank Challenge',
-    description: 'this workout focuses on the muscles of the entire body',
-    score: 564,
-    imagePath: "workoutItem.jpg",
-  },
-  {
-    id: 23657545,
-    title: 'Plank Challenge',
-    description: 'this workout focuses on the muscles of the entire body',
-    score: 564,
-    imagePath: "workoutItem.jpg",
-  },
-];
 
-const Challenges: React.FunctionComponent<{}> = ({}) => {
+const Challenges: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
+  
+  const challenges = useSelector((state: any) => state.fitness.challenges);
   
   const responsive = {
     desktop: {
@@ -109,18 +73,7 @@ const Challenges: React.FunctionComponent<{}> = ({}) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    // transferMoneyLoading: state.accounts.transferMoneyLoading,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    // transferMoney: (from, to, amount) => dispatch(transferMoney(from, to, amount))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Challenges)
+export default Challenges;
 
 const Styles = styled.div`
   display: flex;
