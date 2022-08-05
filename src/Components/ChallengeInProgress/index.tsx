@@ -99,7 +99,7 @@ const ChallengeInProgress: React.FunctionComponent<{}> = () => {
       <div style={{ display: 'flex', flexDirection: 'column' }} >
         <CountdownCircleTimer
               isPlaying
-              duration={5}
+              duration={120}
               colors={['#9900ef', '#ff6900', '#fcb900', '#7bdcb5', '#eb144c', '#F7B801', '#A30000']}
               colorsTime={[59, 40, 30, 20, 10, 5]}
               onComplete={() => {
