@@ -211,6 +211,22 @@ export const initialState: State = {
   moves: moves,
 }
 
+const getCaloriesForWorkout = (workout, movesList) => {
+  const result = workout?.workoutInProgress?.reduce(
+    (acc, moveId) => {
+    let currentMove = movesList.filter(({ id }) => id === moveId)?.pop()
+
+    if (currentMove) {
+      return acc + currentMove?.calories;
+    }
+    return acc
+    },
+    0
+  );
+
+  return result;
+}
+
 const calculateCaloriesToBurn = (state, plan): number => {
   let workouts = [...state.workouts]
 
@@ -219,7 +235,7 @@ const calculateCaloriesToBurn = (state, plan): number => {
     let currentWorkout = workouts.filter((item) => item.id === workoutId)?.pop()
 
     if (currentWorkout) {
-      return acc + currentWorkout?.calories;
+      return acc + getCaloriesForWorkout(currentWorkout, [...state.moves]);
     }
     return acc
     },
@@ -237,7 +253,7 @@ const calculateCaloriesBurned = (state, plan): number => {
     let currentWorkout = workouts.filter((item) => item.id === workoutId && isDone)?.pop()
 
     if (currentWorkout) {
-      return acc + currentWorkout?.calories;
+      return acc + getCaloriesForWorkout(currentWorkout, [...state.moves]);
     }
     return acc
     },
@@ -271,7 +287,30 @@ export default (state: State = initialState, action: Action): State => {
         caloriesBurnedThirtyDays: 0
       }
     case Constants.AUTOMATICALLY_GENERATE:
-      return { ...state, thirtyDayPlan: [...initialState.thirtyDayPlan]}
+      let roleWorkouts = [...state.workouts].filter((wo) => {
+        return wo.role === state.role
+      })
+
+      let tripleWorkouts = [...roleWorkouts, ...roleWorkouts, ...roleWorkouts].slice(0, 30).map((item, index) => {
+        if (index === 14)
+          return 0;
+        return item.id;
+      });
+
+      let autoPlan = [...initialState.thirtyDayPlan].map(({ id }, index) => {
+        return {
+          id,
+          isDone: false,
+          workoutId: tripleWorkouts[index],
+        }
+      });
+
+      let res6 = calculateCaloriesToBurn(state, autoPlan);
+
+      return { ...state, thirtyDayPlan: autoPlan, 
+        caloriesToBurnThirtyDays: res6,
+        caloriesBurnedThirtyDays: 0,
+      }
     case Constants.MARK_DAY_AS_DONE:
       let newPlan = [...state.thirtyDayPlan ]?.
         map(({ id, isDone, workoutId }) => {

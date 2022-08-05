@@ -69,7 +69,10 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
           startIcon={<AutoFixHighOutlinedIcon />} 
           variant="contained"
           size={'small'}
-          onClick={() => dispatch(automaticallyGenerate())}
+          onClick={() => {
+            dispatch(automaticallyGenerate());
+            setTimeout(() => window.location.reload(), 1000);
+          }}
         >Automatically generate</Button>
         <MotifitTitle>30 day plan</MotifitTitle>
         <Button 
@@ -77,11 +80,11 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
           startIcon={<LayersClearOutlinedIcon />} 
           variant="contained"
           size={'small'}
-          onClick={() => dispatch(startFromScratch())}
+          onClick={() => {
+            dispatch(startFromScratch());
+          }}
         >Start from scratch</Button>
       </div>  
-
-
 
     <Box sx={{ width: "100%", marginTop: 1 }}>
       <Grid container rowSpacing={0.5} columnSpacing={0.5}>
