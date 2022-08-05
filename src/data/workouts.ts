@@ -7,7 +7,7 @@ export const workouts: any = [
       description: 'Traps, Lats, Lower back, Shoulders',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/1.jpg",
       workoutInProgress: [7,8,9,10,11,0,27,28,29,33],
     },
     {
@@ -16,7 +16,7 @@ export const workouts: any = [
       description: 'Hamstrings, Glutes, Quads, Calves, Abs',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/2.jpg",
       workoutInProgress: [44,75,72,71,0,61,59,58,56,51],
     },
     {
@@ -25,7 +25,7 @@ export const workouts: any = [
       description: 'Deltoids, Biceps, Triceps, Forearms, Pecs, Traps, Abs, Lats, Lower back, Shoulders',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/3.jpg",
       workoutInProgress: [15,20,26,30,0,34,44,46,48,52],
     },
     {
@@ -34,7 +34,7 @@ export const workouts: any = [
       description: 'Hamstrings, Glutes, Quads, Calves, Abs, Biceps, Triceps, Forearms, Traps, Lats, Lower back, Shoulders',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/4.jpg",
       workoutInProgress: [74,65,71,59,60,0,51,56,58,49],
     },
     {
@@ -43,7 +43,7 @@ export const workouts: any = [
       description: 'Full upper and lower body stretch',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/5.jpg",
       workoutInProgress: [53,54,66,67,68,1,12,18,19,38],
     },
     {
@@ -52,7 +52,7 @@ export const workouts: any = [
       description: 'Full body workout with resistance bands',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/6.jpg",
       workoutInProgress: [20,22,27,30,0,32,43,64,65,69],
     },
     {
@@ -61,7 +61,7 @@ export const workouts: any = [
       description: 'Ab muscles',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/7.jpg",
       workoutInProgress: [33,44,45,47,0,48,50,51,52,54],
     },
     {
@@ -70,7 +70,7 @@ export const workouts: any = [
       description: 'Deltoids, Biceps, Triceps, Forearms, Shoulders',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/8.jpg",
       workoutInProgress: [13,14,15,16,0,25,26,31,32,36],
     },
     {
@@ -79,7 +79,7 @@ export const workouts: any = [
       description: 'Full body workout with dumbbells',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/9.jpg",
       workoutInProgress: [15,16,29,36,0,42,48,51,62,63],
     },
     {
@@ -88,7 +88,7 @@ export const workouts: any = [
       description: 'Full body workout with a barbell',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/10.jpg",
       workoutInProgress: [25,26,34,35,40,0,47,52,59,60,61],
     },
     {
@@ -97,7 +97,7 @@ export const workouts: any = [
       description: 'Hamstrings, Quads, Calves',
       role: 'Beginner',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/11.jpg",
       workoutInProgress: [55,60,64,69,0,71,72,73,74,75],
     },
     // Intermediate
@@ -107,7 +107,7 @@ export const workouts: any = [
       description: 'Traps, Lats, Lower back, Shoulders',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/1.jpg",
       workoutInProgress: [2,4,5,6,7,8,9,10,11,0,27,28,29,33,26,4,5,6,7,8],
     },
     {
@@ -116,7 +116,7 @@ export const workouts: any = [
       description: 'Hamstrings, Glutes, Quads, Calves, Abs',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/2.jpg",
       workoutInProgress: [44,45,46,75,74,73,72,71,70,0,64,63,62,61,59,58,57,56,55,51],
     },
     {
@@ -125,7 +125,7 @@ export const workouts: any = [
       description: 'Deltoids, Biceps, Triceps, Forearms, Pecs, Traps, Abs, Lats, Lower back, Shoulders',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/3.jpg",
       workoutInProgress: [14,15,20,21,26,27,28,30,31,33,0,36,37,41,42,44,46,48,51,52],
     },
     {
@@ -134,7 +134,7 @@ export const workouts: any = [
       description: 'Hamstrings, Glutes, Quads, Calves, Abs, Biceps, Triceps, Forearms, Traps, Lats, Lower back, Shoulders',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/4.jpg",
       workoutInProgress: [70,71,72,73,59,60,63,62,64,0,55,57,56,58,44,45,46,48,49,50],
     },
     {
@@ -143,7 +143,7 @@ export const workouts: any = [
       description: 'Full upper and lower body stretch',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/5.jpg",
       workoutInProgress: [53,54,66,67,68,1,12,18,19,38],
     },
     {
@@ -152,7 +152,7 @@ export const workouts: any = [
       description: 'Full body workout with resistance bands',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/6.jpg",
       workoutInProgress: [2,3,20,21,22,27,30,31,32,0,43,64,65,69,22,27,3,30,43,64],
     },
     {
@@ -161,7 +161,7 @@ export const workouts: any = [
       description: 'Ab muscles',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/7.jpg",
       workoutInProgress: [11,31,32,33,43,44,45,46,0,47,11,48,50,51,52,53,54,32,44,48],
     },
     {
@@ -170,7 +170,7 @@ export const workouts: any = [
       description: 'Deltoids, Biceps, Triceps, Forearms, Shoulders',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/8.jpg",
       workoutInProgress: [3,7,8,9,10,11,16,17,20,0,26,28,32,33,34,35,36,37,41,42],
     },
     {
@@ -179,7 +179,7 @@ export const workouts: any = [
       description: 'Full body workout with dumbbells',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/9.jpg",
       workoutInProgress: [6,7,8,15,16,17,24,28,29,36,0,37,41,42,48,49,50,51,62,63],
     },
     {
@@ -188,7 +188,7 @@ export const workouts: any = [
       description: 'Full body workout with a barbell',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/10.jpg",
       workoutInProgress: [9,13,23,25,26,34,35,39,40,47,0,52,59,60,61,23,26,35,47,9],
     },
     {
@@ -197,7 +197,7 @@ export const workouts: any = [
       description: 'Hamstrings, Quads, Calves',
       role: 'Intermediate',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/11.jpg",
       workoutInProgress: [55,56,57,59,75,74,60,61,62,63,0,64,65,69,70,71,72,73,74,75],
     },
     // Expert 
@@ -207,7 +207,7 @@ export const workouts: any = [
       description: 'Traps, Lats, Lower back, Shoulders',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/1.jpg",
       workoutInProgress: [2,4,5,6,7,8,9,10,11,26,27,28,29,0,10,2,4,5,6,7,8,9,10,11,26,27,28,29,33,10],
     },
     {
@@ -216,7 +216,7 @@ export const workouts: any = [
       description: 'Hamstrings, Glutes, Quads, Calves, Abs',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/2.jpg",
       workoutInProgress: [44,45,46,75,74,73,72,71,70,65,64,63,62,61,0,58,57,56,55,51,48,44,45,46,75,74,65,64,63,62],
     },
     {
@@ -225,7 +225,7 @@ export const workouts: any = [
       description: 'Deltoids, Biceps, Triceps, Forearms, Pecs, Traps, Abs, Lats, Lower back, Shoulders',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/3.jpg",
       workoutInProgress: [7,9,11,13,14,15,20,21,26,27,28,30,0,31,33,34,36,37,41,42,44,46,48,51,52,7,9,11,13,14],
     },
     {
@@ -234,7 +234,7 @@ export const workouts: any = [
       description: 'Hamstrings, Glutes, Quads, Calves, Abs, Biceps, Triceps, Forearms, Traps, Lats, Lower back, Shoulders',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/4.jpg",
       workoutInProgress: [74,75,65,70,71,72,73,59,60,63,62,64,51,0,57,56,58,44,45,46,48,49,50,70,71,72,73,59,60],
     },
     {
@@ -243,7 +243,7 @@ export const workouts: any = [
       description: 'Full upper and lower body stretch',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/5.jpg",
       workoutInProgress: [53,54,66,67,68,1,12,18,19,38],
     },
     {
@@ -252,7 +252,7 @@ export const workouts: any = [
       description: 'Full body workout with resistance bands',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/6.jpg",
       workoutInProgress: [2,3,20,21,22,27,30,31,32,43,64,65,69,0,2,3,20,21,22,27,30,31,32,43,64,65,69,30,20,2],
     },
     {
@@ -261,7 +261,7 @@ export const workouts: any = [
       description: 'Ab muscles',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/7.jpg",
       workoutInProgress: [11,31,32,33,43,44,45,46,47,48,11,50,51,52,0,54,32,33,43,44,45,46,47,48,31,50,51,52,53,54],
     },
     {
@@ -270,7 +270,7 @@ export const workouts: any = [
       description: 'Deltoids, Biceps, Triceps, Forearms, Shoulders',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/8.jpg",
       workoutInProgress: [3,4,6,9,10,11,13,14,15,16,17,20,21,0,23,24,26,27,28,29,30,31,32,33,34,35,36,37,41,42],
     },
     {
@@ -279,7 +279,7 @@ export const workouts: any = [
       description: 'Full body workout with dumbbells',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/9.jpg",
       workoutInProgress: [41,42,48,49,50,51,62,63,4,5,6,7,8,15,0,16,17,24,28,29,36,37,41,42,48,49,50,51,62,63],
     },
     {
@@ -288,7 +288,7 @@ export const workouts: any = [
       description: 'Full body workout with a barbell',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/10.jpg",
       workoutInProgress: [9,13,23,25,26,34,61,35,39,40,47,52,59,60,61,0,9,13,23,25,26,34,35,39,40,47,52,59,60,61],
     },
     {
@@ -297,7 +297,7 @@ export const workouts: any = [
       description: 'Hamstrings, Quads, Calves',
       role: 'Expert',
       calories: 353,
-      imagePath: "workoutItem.jpg",
+      imagePath: "workouts/11.jpg",
       workoutInProgress: [55,56,57,59,60,61,64,65,69,70,71,72,73,74,75,0,57,59,60,61,62,63,64,65,69,70,71,73,74,75],
     },
   ];
