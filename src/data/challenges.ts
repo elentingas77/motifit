@@ -1,0 +1,60 @@
+
+export const challenges: any = [
+    {
+      id: 1231,
+      title: 'Tallinn Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+    {
+      id: 1232,
+      title: 'Tartu Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+    {
+      id: 1233,
+      title: 'Haapsalu Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+    {
+      id: 1234,
+      title: 'Pärnu Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+    {
+      id: 1235,
+      title: 'Viljandi Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+    {
+      id: 1236,
+      title: 'Kuressaare Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+    {
+      id: 1237,
+      title: 'Kärdla Challenge',
+      description: 'this workout focuses on the muscles of the entire body',
+      score: 564,
+      imagePath: "workoutItem.jpg",
+      challengeInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+    },
+  ];
+

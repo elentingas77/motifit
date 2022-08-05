@@ -8,7 +8,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [2,4,5,6,7,8,9,10,11,26,27,28,29,33],
+      workoutInProgress: [7,8,9,10,11,0,27,28,29,33],
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [44,45,46,75,74,73,72,71,70,65,64,63,62,61,59,58,57,56,55,51,48],
+      workoutInProgress: [44,75,72,71,0,61,59,58,56,51],
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [7,9,11,13,14,15,20,21,26,27,28,30,31,33,34,36,37,41,42,44,46,48,51,52],
+      workoutInProgress: [15,20,26,30,0,34,44,46,48,52],
     },
     {
       id: 4,
@@ -35,7 +35,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [74,75,65,70,71,72,73,59,60,63,62,64,51,55,57,56,58,44,45,46,48,49,50],
+      workoutInProgress: [74,65,71,59,60,0,51,56,58,49],
     },
     {
       id: 5,
@@ -53,7 +53,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [2,3,20,21,22,27,30,31,32,43,64,65,69],
+      workoutInProgress: [20,22,27,30,0,32,43,64,65,69],
     },
     {
       id: 7,
@@ -62,7 +62,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [11,31,32,33,43,44,45,46,47,48,48,50,51,52,53,54],
+      workoutInProgress: [33,44,45,47,0,48,50,51,52,54],
     },
     {
       id: 8,
@@ -71,7 +71,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [3,4,5,6,7,8,9,10,11,13,14,15,16,17,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,41,42],
+      workoutInProgress: [13,14,15,16,0,25,26,31,32,36],
     },
     {
       id: 9,
@@ -80,7 +80,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [4,5,6,7,8,15,16,17,24,28,29,36,37,41,42,48,49,50,51,62,63],
+      workoutInProgress: [15,16,29,36,0,42,48,51,62,63],
     },
     {
       id: 10,
@@ -89,7 +89,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [9,13,23,25,26,34,35,39,40,47,52,59,60,61],
+      workoutInProgress: [25,26,34,35,40,0,47,52,59,60,61],
     },
     {
       id: 11,
@@ -98,7 +98,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [55,56,57,59,60,61,62,63,64,65,69,70,71,72,73,74,75],
+      workoutInProgress: [55,60,64,69,0,71,72,73,74,75],
     },
     // Intermediate
     {
@@ -108,7 +108,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 6, 7, 8],
+      workoutInProgress: [2,4,5,6,7,8,9,10,11,0,27,28,29,33,26,4,5,6,7,8],
     },
     {
       id: 22,
@@ -117,7 +117,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [44,45,46,75,74,73,72,71,70,0,64,63,62,61,59,58,57,56,55,51],
     },
     {
       id: 33,
@@ -126,7 +126,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [14,15,20,21,26,27,28,30,31,33,0,36,37,41,42,44,46,48,51,52],
     },
     {
       id: 44,
@@ -135,7 +135,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [70,71,72,73,59,60,63,62,64,0,55,57,56,58,44,45,46,48,49,50],
     },
     {
       id: 55,
@@ -144,7 +144,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [1,12,18,19,38,53,54,66,67,68],
     },
     {
       id: 66,
@@ -153,7 +153,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [2,3,20,21,22,27,30,31,32,0,43,64,65,69,22,27,3,30,43,64],
     },
     {
       id: 77,
@@ -162,7 +162,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [11,31,32,33,43,44,45,46,0,47,11,48,50,51,52,53,54,32,44,48],
     },
     {
       id: 88,
@@ -171,7 +171,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [3,7,8,9,10,11,16,17,20,0,26,28,32,33,34,35,36,37,41,42],
     },
     {
       id: 99,
@@ -180,7 +180,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [6,7,8,15,16,17,24,28,29,36,0,37,41,42,48,49,50,51,62,63],
     },
     {
       id: 1010,
@@ -189,7 +189,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [9,13,23,25,26,34,35,39,40,47,0,52,59,60,61,23,26,35,47,9],
     },
     {
       id: 1111,
@@ -198,7 +198,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [55,56,57,59,75,74,60,61,62,63,0,64,65,69,70,71,72,73,74,75],
     },
     // Expert 
     {
@@ -208,7 +208,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 6, 7, 8],
+      workoutInProgress: [2,4,5,6,7,8,9,10,11,26,27,28,29,0,10,2,4,5,6,7,8,9,10,11,26,27,28,29,33,10],
     },
     {
       id: 222,
@@ -217,7 +217,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [44,45,46,75,74,73,72,71,70,65,64,63,62,61,0,58,57,56,55,51,48,44,45,46,75,74,65,64,63,62],
     },
     {
       id: 333,
@@ -226,7 +226,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [7,9,11,13,14,15,20,21,26,27,28,30,0,31,33,34,36,37,41,42,44,46,48,51,52,7,9,11,13,14],
     },
     {
       id: 444,
@@ -235,7 +235,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [74,75,65,70,71,72,73,59,60,63,62,64,51,0,57,56,58,44,45,46,48,49,50,70,71,72,73,59,60],
     },
     {
       id: 555,
@@ -244,7 +244,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [1,12,18,19,38,53,54,66,67,68],
     },
     {
       id: 666,
@@ -253,7 +253,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [2,3,20,21,22,27,30,31,32,43,64,65,69,0,2,3,20,21,22,27,30,31,32,43,64,65,69,30,20,2],
     },
     {
       id: 777,
@@ -262,7 +262,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [11,31,32,33,43,44,45,46,47,48,11,50,51,52,0,54,32,33,43,44,45,46,47,48,31,50,51,52,53,54],
     },
     {
       id: 888,
@@ -271,7 +271,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [3,4,6,9,10,11,13,14,15,16,17,20,21,0,23,24,26,27,28,29,30,31,32,33,34,35,36,37,41,42],
     },
     {
       id: 999,
@@ -280,7 +280,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [41,42,48,49,50,51,62,63,4,5,6,7,8,15,0,16,17,24,28,29,36,37,41,42,48,49,50,51,62,63],
     },
     {
       id: 101010,
@@ -289,7 +289,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [9,13,23,25,26,34,61,35,39,40,47,52,59,60,61,0,9,13,23,25,26,34,35,39,40,47,52,59,60,61],
     },
     {
       id: 111111,
@@ -298,6 +298,6 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1, 2, 3 , 4, 0, 2, 4, 9],
+      workoutInProgress: [55,56,57,59,60,61,64,65,69,70,71,72,73,74,75,0,57,59,60,61,62,63,64,65,69,70,71,73,74,75],
     },
   ];

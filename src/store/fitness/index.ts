@@ -1,6 +1,6 @@
 import { Constants } from './actions/types'
 import { Action } from '../Action.model'
-import { challenges } from '../../data'
+import { challenges } from '../../data/challenges'
 import { moves } from '../../data/moves'
 import { workouts } from '../../data/workouts'
 
