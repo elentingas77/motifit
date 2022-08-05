@@ -84,11 +84,11 @@ const Workouts: React.FunctionComponent<{}> = () => {
             <IconButton sx={{ color: '#006b76' }}>
               <FaceRetouchingNaturalIcon fontSize="large" />
             </IconButton>
-            Did you know? 
+            Benefits of Exercise 
             <IconButton sx={{ color: '#e65100' }} >
               <AutoAwesomeIcon fontSize="small" />
             </IconButton>
-              {healthBenefits[Math.floor(Math.random() * 15)]}
+              {healthBenefits[Math.floor(Math.random() * 10)]}
             <IconButton sx={{ color: '#006b76' }} >
               <EmojiNatureOutlinedIcon fontSize="large" />
             </IconButton>

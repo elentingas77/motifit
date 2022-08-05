@@ -614,3 +614,5 @@ export const moves: any = [
       instructions: 'Stand with your back to a bench (or raised surface) and place one of your feet on the bench. Squat down until your front leg is about parallel to the floor. Go back to the starting position. After completing the desired amount of reps, switch legs and repeat.',
     },
   ];
+
+  // source: https://musclewiki.com/
