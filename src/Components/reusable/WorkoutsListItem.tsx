@@ -4,6 +4,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Button, IconButton, Tooltip, Typography } from '@mui/material';
 import colors from '../../constants/colors';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import { useSelector } from 'react-redux';
 
 interface Props {
   id: any
@@ -12,6 +13,7 @@ interface Props {
   role: string
   calories: number
   imagePath: string
+  workoutInProgress: any
   onClick?: () => void
 }
 
@@ -30,7 +32,27 @@ const CustomStyle = styled.div`
 `
 
 const WorkoutsListItem: React.FunctionComponent<Props> = ({ 
-    id, title, description, role, calories, imagePath, onClick = () => {} }) => {
+    id, title, description, role, calories, imagePath, workoutInProgress, onClick = () => {} }) => {
+
+      
+  const moves = useSelector((state: any) => state.fitness.moves);
+
+  const getCaloriesForWorkout = () => {
+    const result = workoutInProgress?.reduce(
+      (acc, moveId) => {
+      let currentMove = moves.filter(({ id }) => id === moveId)?.pop()
+
+      if (currentMove) {
+        return acc + currentMove?.calories;
+      }
+      return acc
+      },
+      0
+    );
+
+    return result;
+  }
+
   return (
     <CustomStyle key={id}>
       <Typography variant="body1">
@@ -62,7 +84,7 @@ const WorkoutsListItem: React.FunctionComponent<Props> = ({
         />
         
       <Typography variant="overline" gutterBottom component="div">
-        {calories} Calories
+        {getCaloriesForWorkout()} Calories
       </Typography>
 
       <Button onClick={onClick} sx={{ bgcolor: colors.motifitPurple }} startIcon={<FitnessCenterIcon />} variant="contained">Start</Button>

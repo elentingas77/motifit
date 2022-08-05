@@ -63,6 +63,7 @@ const Workouts: React.FunctionComponent<{}> = () => {
             role={workout.role}
             calories={workout.calories}
             imagePath={workout.imagePath}
+            workoutInProgress={workout.workoutInProgress}
             onClick={() => history.push('/workout-in-progress/' + workout.id, {workout: workout})}
         />
         ))}

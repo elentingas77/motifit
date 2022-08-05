@@ -44,7 +44,7 @@ export const workouts: any = [
       role: 'Beginner',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1,12,18,19,38,53,54,66,67,68],
+      workoutInProgress: [53,54,66,67,68,1,12,18,19,38],
     },
     {
       id: 6,
@@ -144,7 +144,7 @@ export const workouts: any = [
       role: 'Intermediate',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1,12,18,19,38,53,54,66,67,68],
+      workoutInProgress: [53,54,66,67,68,1,12,18,19,38],
     },
     {
       id: 66,
@@ -244,7 +244,7 @@ export const workouts: any = [
       role: 'Expert',
       calories: 353,
       imagePath: "workoutItem.jpg",
-      workoutInProgress: [1,12,18,19,38,53,54,66,67,68],
+      workoutInProgress: [53,54,66,67,68,1,12,18,19,38],
     },
     {
       id: 666,
