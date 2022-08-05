@@ -142,7 +142,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
                 </ListItemButton>
               </ListItem>
               
-              <Divider />
+              {/* <Divider />
               <ListItem disablePadding>
                 <ListItemButton onClick={() => openInNewTab()}>
                   <ListItemIcon>
@@ -150,7 +150,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
                   </ListItemIcon>
                   <ListItemText primary={'Give Us Your Feedback'} />
                 </ListItemButton>
-              </ListItem>
+              </ListItem> */}
           </List>
         </div>
         <div className="page">

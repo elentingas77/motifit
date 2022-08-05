@@ -1,6 +1,6 @@
 import { Constants } from './actions/types'
 import { Action } from '../Action.model'
-import { moves } from '../../data'
+import { moves } from '../../data/moves'
 
 export interface State {
   right: Array<any>

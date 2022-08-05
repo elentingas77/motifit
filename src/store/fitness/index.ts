@@ -1,6 +1,8 @@
 import { Constants } from './actions/types'
 import { Action } from '../Action.model'
-import { workouts, challenges, moves } from '../../data'
+import { challenges } from '../../data'
+import { moves } from '../../data/moves'
+import { workouts } from '../../data/workouts'
 
 export interface State {
   workouts: Array<any>
