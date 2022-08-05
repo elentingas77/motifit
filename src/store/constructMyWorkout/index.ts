@@ -16,7 +16,7 @@ export const initialState: State = {
   left: allMoves.map(item => item.id),
   moves: allMoves,
   myWorkout: {
-    id: 777,
+    id: 77777,
     title: 'My custom workout',
     description: '',
     role: 'Custom',
