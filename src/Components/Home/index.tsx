@@ -40,7 +40,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
   }
 
   const openInNewTab = () => {
-    window.open('https://google.com', '_blank', 'noopener,noreferrer');
+    window.open('https://forms.gle/S8KNAu3BjC6B1YqJA', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -142,7 +142,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
                 </ListItemButton>
               </ListItem>
               
-              {/* <Divider />
+              <Divider />
               <ListItem disablePadding>
                 <ListItemButton onClick={() => openInNewTab()}>
                   <ListItemIcon>
@@ -150,7 +150,7 @@ const Home: React.FunctionComponent<{ children: any }> = ({ children }) => {
                   </ListItemIcon>
                   <ListItemText primary={'Give Us Your Feedback'} />
                 </ListItemButton>
-              </ListItem> */}
+              </ListItem>
           </List>
         </div>
         <div className="page">
