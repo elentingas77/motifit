@@ -9,6 +9,7 @@ import { Box, Button, Grid, Slider, Typography } from '@mui/material';
 import DayItem from '../reusable/DayItem';
 import colors from '../../constants/colors';
 import { automaticallyGenerate, startFromScratch } from 'store/fitness/actions/creators'
+import ReactLoading from 'react-loading'
 
 const CaloriesSlider = styled(Slider)({
   marginTop: 30,
@@ -56,6 +57,7 @@ const CaloriesSlider = styled(Slider)({
 const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
   let history = useHistory();  
 
+  const [refresh, setRefresh] = React.useState<any>(false);
   const thirtyDayPlan = useSelector((state: any) => state.fitness.thirtyDayPlan);
   const caloriesBurnedThirtyDays = useSelector((state: any) => state.fitness.caloriesBurnedThirtyDays);
   const caloriesToBurnThirtyDays = useSelector((state: any) => state.fitness.caloriesToBurnThirtyDays);
@@ -71,7 +73,8 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
           size={'small'}
           onClick={() => {
             dispatch(automaticallyGenerate());
-            setTimeout(() => window.location.reload(), 1000);
+            setRefresh(true);
+            setTimeout(() => setRefresh(false), 1000);
           }}
         >Automatically generate</Button>
         <MotifitTitle>30 day plan</MotifitTitle>
@@ -87,6 +90,8 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
       </div>  
 
     <Box sx={{ width: "100%", marginTop: 1 }}>
+      
+    {!refresh &&
       <Grid container rowSpacing={0.5} columnSpacing={0.5}>
         {thirtyDayPlan.map(({ id, isDone, workoutId, isRestDay }) => {
           return (
@@ -101,6 +106,10 @@ const ThirtyDayPlan: React.FunctionComponent<{}> = () => {
           );
         })}
       </Grid>
+    }
+    
+    {refresh && <ReactLoading className='loader-calendar' type={"spinningBubbles"} color={colors.motifitGreen} />}
+
     </Box>
 
     <Typography variant="button" sx={{ textAlign: "center", maginTop: "10", }}>
@@ -159,6 +168,13 @@ const Styles = styled.div`
 
   &.-MuiSlider-track: {
     background-color: green;
+  }
+
+  .loader-calendar {
+    margin-top: 350px;
+    margin-bottom: 350px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
 `

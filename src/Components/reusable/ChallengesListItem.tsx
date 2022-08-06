@@ -17,7 +17,7 @@ interface Props {
 const CustomStyle = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 280px;
   height: 500px;
   background-color: #795548;
   border-radius: 15px;
@@ -43,8 +43,8 @@ const ChallengesListItem: React.FunctionComponent<Props> = ({
         <img
           src={require(`../../assets/images/${imagePath}`)}
           alt={title}
-          height={280}
-          width={280}
+          height={"250px"}
+          width={"250px"}
           loading="lazy"
           style={{ borderRadius: '50%', marginTop: 11 }}
         />

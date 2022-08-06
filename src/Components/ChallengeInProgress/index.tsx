@@ -91,7 +91,7 @@ const ChallengeInProgress: React.FunctionComponent<{}> = () => {
         alt="fitness challenge move"
         width={480 * 1.3}
         height={270 * 1.3}
-        src={ currentMove?.imagePath && !isRestMove ? require(`../../assets/images/${currentMove?.imagePath}`) : Rest} 
+        src={ currentMove?.imagePath && !isRestMove ? `https://www.bumpclub.ee/~nt/motifit/${currentMove?.imagePath}` : Rest} 
         style={{ borderRadius: '15px', marginTop: 11, marginBottom: 11, marginLeft: 100, marginRight: 'auto'}}
       />
       </div>

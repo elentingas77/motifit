@@ -25,7 +25,7 @@ const Score: React.FunctionComponent<{}> = () => {
   const { completedWorkouts, completedChallenges, score, calories } = feedback;
 
   const shareText = `I am making great progress and becoming healthier with Motifit. I have completed ${completedWorkouts} workout${completedWorkouts !== 1 ? 's' : ''}, ${completedChallenges} challenge${completedChallenges !== 1 ? 's' : ''} and burned ${calories} calories. My overall score is ${score}.`;
-  const url = window.location.hostname;
+  const url = 'https://motifit-project.onrender.com';
 
   return (
     <Styles>
